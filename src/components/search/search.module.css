@@ -1,0 +1,22 @@
+.search{
+    background-color: var(--main-color);
+    display: flex;
+    margin-left: 100px;
+    /* position: fixed; */
+}
+
+
+.searchBar{
+    position: absolute;
+    top: 10px;
+    width: 40%;
+    height: 25px;
+    border-radius: 10px;
+}
+
+/* .searchbtn{
+    background-color: black;
+    color: white;
+    font-size: 14px;
+    margin-left: 100px;
+} */
