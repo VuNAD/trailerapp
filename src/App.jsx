@@ -1,8 +1,11 @@
 import Home from "./components/pages/home/Home";
-import Poster from "./components/poster/Poster";
+import classes from "./app.module.css";
+import ActorInformation from "./components/pages/actor-information/ActorInformation";
+import LogInForm from "./components/pages/login/LogInForm"
+import SignUp from "./components/pages/register/SignUp";
 function App() {
   return (
-    <div className="App">
+    <div className={classes.App}>
       <Home />
       {/* <Poster/> */}
     </div>

@@ -3,7 +3,7 @@ import classes from "./featured.module.css";
 const Featured = () => {
   return (
     <div className={classes.main}>
-      <div className="container">
+      <div className={classes.container}>
         <img
           className={classes.poster}
           src="https://cdnimg.vietnamplus.vn/t620/uploaded/bokttj/2022_05_09/doctor_strange.jpg"

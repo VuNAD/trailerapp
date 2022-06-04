@@ -1,5 +1,7 @@
 .main {
     background-color: black;
+    display: flex;
+    /* left: 0px; */
 
 }
 

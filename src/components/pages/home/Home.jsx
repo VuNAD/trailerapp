@@ -6,7 +6,7 @@ import WatchList from '../../list/watchlist/WatchList'
 
 const Home = () => {
   return (
-    <div className={classes}>
+    <div className={classes.main}>
         <NavBar/>
         <Featured/>
         <WatchList/>

@@ -1,0 +1,53 @@
+.main {
+  background-color: black;
+  color: white;
+  margin-left: 40px;
+}
+.container {
+  display: flex;
+  margin-top: 50px;
+}
+.poster {
+  width: 225px;
+  height: 350px;
+  margin-left: 90px;
+}
+.details {
+  margin-left: 70px;
+}
+
+.movie-details {
+  font-size: 30px;
+}
+.release {
+  margin-top: 20px;
+}
+.summary {
+  width: 550px;
+  height: max-content;
+  margin-top: 20px;
+}
+.genre{
+    margin-top: 20px;
+}
+.time{
+    margin-top: 20px;
+}
+
+.actor-container{
+    /* display: flex; */
+    color: white;
+    margin-left: 354px;
+
+}
+.title{
+    margin-left: 30px;
+    font-size: 30px;
+    color: orange;
+}
+.actor{
+    width: 700px;
+    height: max-content;
+    display: flex;
+    margin-top: 20px;
+}

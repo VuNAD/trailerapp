@@ -1,0 +1,54 @@
+.main {
+  background-color: black;
+  color: white;
+  display: flex;
+  margin-left: 40px;
+}
+
+.expert-score {
+  margin-left: 90px;
+  /* display: flex; */
+}
+
+.title {
+  font-size: 25px;
+}
+.box-scores {
+  justify-content: space-between;
+  background-color: green;
+  width: 50px;
+  padding: 8px;
+
+  height: 40px;
+  font-size: 25px;
+  align-items: center;
+  /* margin-top: 20px; */
+  border-radius: 5px;
+  margin-right: 20px;
+  /* margin-left: 20px; */
+}
+
+.reviews {
+  display: flex;
+  margin-top: 30px;
+  font-size: 20px;
+}
+
+.positive {
+  color: green;
+}
+.mixed {
+  color: orange;
+}
+
+.negative {
+  color: red;
+}
+
+.user-score {
+  margin-left: 130px;
+}
+.list-name {
+  margin-top: 20px;
+  font-size: 25px;
+}
