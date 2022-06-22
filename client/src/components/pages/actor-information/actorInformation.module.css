@@ -1,0 +1,59 @@
+.main {
+  background-color: black;
+  color: white;
+}
+.wrapper {
+  display: flex;
+}
+.avatar {
+  width: 200px;
+  height: 300px;
+  margin-left: 120px;
+  margin-top: 50px;
+}
+
+.actor-information {
+  color: white;
+  margin-left: 40px;
+  margin-top: 50px;
+  /* display: block ; */
+}
+.actor-name {
+  color: white;
+  font-size: 30px;
+}
+.actor-birthday {
+  margin-top: 10px;
+}
+
+.actor-story {
+  width: 600px;
+  margin-top: 10px;
+  border: 3px solid rgba(241, 241, 241, 0.2);
+}
+.read-or-hide {
+  color: rgb(69, 69, 253);
+  cursor: pointer;
+}
+.read-or-hide:hover {
+  color: #676fc6;
+  
+}
+
+.text {
+  display: inline;
+  width: 100%;
+}
+.container {
+  margin-left: 80px;
+}
+.title {
+  margin-top: 30px;
+  margin-left: 40px;
+  font-size: 30px;
+}
+.highest-scored {
+  display: flex;
+  /* justify-content: space-around; */
+  justify-self: start;
+}
