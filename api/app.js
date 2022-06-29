@@ -8,7 +8,14 @@ const actorRoutes= require("./routes/actor-routes");
 const reviewRoutes= require("./routes/review-routes");
 // const mongoWork = require("./mongoose");
 const HttpError = require("./models/http-error");
+const cors = require("cors");
 
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:3000",
+  })
+);
 app.use(bodyParser.json());
 
 app.use("/api/trailer", trailerRoutes); // => /api/places...
@@ -17,7 +24,7 @@ app.use("/api/actor", actorRoutes); // => /api/actor...
 app.use("/api/review", reviewRoutes)
 mongoose
   .connect(
-    "mongodb+srv://declanvu:nav912k36795515@trailer_trailerapp.2vhgqsu.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://declanvu:nav912k36795515@trailer_trailerapp.2vhgqsu.mongodb.net/trailerapp?retryWrites=true&w=majority"
   )
   .then(() => {
     app.listen(5000);

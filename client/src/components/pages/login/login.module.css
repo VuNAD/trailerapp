@@ -1,4 +1,4 @@
-.main {
+/* .main {
   font-family: sans-serif;
   display: flex;
   align-items: center;
@@ -52,15 +52,12 @@ input[type="submit"]:hover {
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 250px;
   height: 300px;
-}
-
-.list-container {
-  display: flex;
+  justify-content: center;
 }
 
 .error {
   color: red;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .title {
@@ -75,4 +72,63 @@ input[type="submit"]:hover {
   margin: 10px;
 }
 
+.register{
+  margin-top: 20px;
+} */
 
+.main {
+  color: black;
+  background-color: white;
+  width: 20%;
+  /* max-width: 25rem; */
+  margin: 7rem auto;
+  text-align: center;
+}
+
+.login {
+  /* padding: 100px; */
+  margin-top: 200px;
+  margin-left: 600px;
+  margin-bottom: 200px;
+  color: black;
+  border: 1px solid rgba(157, 41, 41, 0.2);
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(133, 133, 133, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 250px;
+  height: 300px;
+  justify-content: center;
+  position: relative;
+}
+.email,
+.password {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.input-email,
+.input-password {
+  font-size: 14px;
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-left: 5px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.submit-login {
+  margin-top: 20px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  width: 95%;
+  background-color: #04aa6d;
+  font-size: 20px;
+}

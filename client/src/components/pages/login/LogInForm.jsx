@@ -1,84 +1,92 @@
-import React, { Fragment } from "react";
+// import React, { Fragment } from "react";
+import { useContext } from "react";
 import { useState } from "react";
+
+import { useForm } from "../../../hooks/form-hook";
 import classes from "./login.module.css";
+import { AuthContext } from "./../../context/authContext/AuthContext";
+import Input from "../../form/Input";
+import {
+  VALIDATOR_EMAIL,
+  VALIDATOR_MINLENGTH,
+  VALIDATOR_REQUIRE,
+} from "../../util/validators";
 
 const LogInForm = () => {
-  const [errorMessages, setErrorMessages] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const auth = useContext(AuthContext);
+  const [isLoginMode, setIsLoginMode] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
 
-  const database = [
+  const [formState, inputHandler, setFormData] = useForm(
     {
-      email: "user1",
-      password: "pass1",
+      email: {
+        value: "",
+        isValid: false,
+      },
+      password: {
+        value: "",
+        isValid: false,
+      },
     },
-    {
-      email: "user2",
-      password: "pass2",
-    },
-  ];
+    false
+  );
 
-  const errors = {
-    email: "Invalid Email or Password",
-    pass: "Invalid Email or Password",
-  };
-
-  const handleSubmit = (event) => {
+  const authSubmitHandler = async (event) => {
     event.preventDefault();
 
-    var { email, pass } = document.forms[0];
+    setIsLoading(true);
 
-    const userData = database.find((user) => user.username === email.value);
+    if (isLoginMode) {
+      try {
+        const response = await fetch("http://localhost:5000/api/user/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+          }),
+        });
 
-    if (userData) {
-      if (userData.password !== pass.value) {
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
+        const responseData = await response.json();
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        }
+        console.log("Successfully logged in");
+        auth.login();
+      } catch (err) {
+        setIsLoading(false);
+        setError(err.message || "Something went wrong, please try again.");
       }
-    } else {
-      setErrorMessages({ name: "email", message: errors.email });
     }
   };
 
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className={classes.error}>{errorMessages.message}</div>
-    );
-
-  const renderForm = (
-    <div className={classes.form}>
-      <form onSubmit={handleSubmit}>
-        <div className={classes["input-container"]}>
-          <label>Email </label>
-          <input type="text" name="email" required className={classes.email} />
-          {/* {renderErrorMessage("uname")} */}
-        </div>
-        <div className={classes["input-container"]}>
-          <label>Password </label>
-          <input
-            type="password"
-            name="pass"
-            required
-            className={classes.password}
-          />
-          {renderErrorMessage("pass") || renderErrorMessage("email")}
-        </div>
-        <div className={classes["button-container"]}>
-          <input type="submit" className={classes.submit} />
-        </div>
+  return (
+    <div className={classes.main}>
+      <form onSubmit={authSubmitHandler}>
+        <Input
+          element="input"
+          id="email"
+          type="email"
+          label="E-Mail"
+          validators={[VALIDATOR_EMAIL()]}
+          errorText="Please enter a valid email address."
+          onInput={inputHandler}
+        />
+        <Input
+          element="input"
+          id="password"
+          type="password"
+          label="Password"
+          validators={[VALIDATOR_MINLENGTH(5)]}
+          errorText="Please enter a valid password, at least 5 characters."
+          onInput={inputHandler}
+        />
+        <button type="submit">LOGIN</button>
       </form>
     </div>
-  );
-
-  return (
-    <Fragment>
-      <div className={classes.main}>
-        <div className={classes["login-form"]}>
-          <div className={classes.title}>Sign In</div>
-          {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
-        </div>
-      </div>
-    </Fragment>
   );
 };
 

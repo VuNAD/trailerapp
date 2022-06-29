@@ -78,20 +78,16 @@ const WatchList = () => {
   ));
 
   return (
-    <Fragment className={classes.main}>
+    <div className={classes.main}>
       <span className={classes.title}>Watch List</span>
       <div className={classes.wrapper}>
-        <ArrowBackIosNewIcon
-          className={classes["arrow-back"]}
-        />
+        <ArrowBackIosNewIcon className={classes["arrow-back"]} />
         <div className={classes.container}>
-          <div className={classes.main}>{trailerList}</div>
+          <div className={classes.list}>{trailerList}</div>
         </div>
-        <ArrowForwardIosIcon
-          className={classes["arrow-forward"]}
-        />
+        <ArrowForwardIosIcon className={classes["arrow-forward"]} />
       </div>
-    </Fragment>
+    </div>
   );
 };
 

@@ -6,6 +6,7 @@ import Register from "./components/pages/register/Register";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "./components/navbar/NavBar";
 import ActorImages from "./components/pages/actor-information/actor-image/ActorImages";
+import WatchList from "./components/list/watchlist/WatchList";
 
 function App() {
   return (
@@ -20,16 +21,20 @@ function App() {
             <Route path="/login" exact>
               <LogInForm />
             </Route>
-            <Route path="/">
-              <Home />
-            </Route>
             <Route path="/register" exact>
               <Register/>
+            </Route>
+             <Route path="/">
+              <Home />
             </Route>
           </Switch>
         </main>
       </Router>
       {/* <ActorImages/> */}
+      {/* <Register/>
+      <NavBar />
+      <LogInForm /> */}
+      {/* <WatchList/> */}
     </div>
   );
 }
