@@ -1,0 +1,49 @@
+.main {
+  width: 490px;
+  border: 2px solid rgb(168, 168, 168);
+  padding: 20px;
+  /* margin: 20px; */
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: rgb(190, 184, 184);
+  box-shadow: 5px 10px #888888 inset;
+  color: black;
+}
+.container {
+  display: flex;
+  padding: 5px;
+}
+.user-data {
+  display: flex;
+  /* flex-direction: c; */
+}
+
+.box-scores {
+  padding: 14px;
+  width: 36px;
+  height: 50px;
+  /* width: 70px;
+  height: 70px; */
+  background-color: rgb(24, 150, 24);
+  height: max-content;
+  border-radius: 50%;
+  font-size: 32px;
+  text-align: center;
+  color: white;
+}
+
+.name {
+  font-size: 22px;
+  margin-left: 10px;
+  /* color: white; */
+  width: 125px;
+}
+.review-date {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.date {
+  margin-top: 20px;
+  opacity: 0.5;
+}

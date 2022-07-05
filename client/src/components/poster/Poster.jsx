@@ -3,13 +3,11 @@ import classes from "./poster.module.css";
 import StarIcon from "@mui/icons-material/Star";
 import AddIcon from "@mui/icons-material/Add";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import { Fragment } from "react";
 const Poster = (props) => {
   return (
-    <Fragment>
       <div className={classes.main}>
         <div className={classes.box}>
-          <img src={props.img} alt="" />
+          <img src={props.img} alt="" className={classes.image} />
           <div className={classes.content}>
             <div className={classes.scores}>
               <StarIcon className={classes.icon} />
@@ -20,14 +18,13 @@ const Poster = (props) => {
               <AddIcon />
               Watch List
             </button>
-            <button ton className={classes["view-trailer"]}>
+            <button className={classes["view-trailer"]}>
               <PlayArrowIcon />
               <span>Trailer</span>
             </button>
           </div>
         </div>
       </div>
-    </Fragment>
   );
 };
 

@@ -1,5 +1,5 @@
 .main {
-  background-color: black;
+  background-color: var(--main-color);
   color: white;
   display: flex;
   margin-left: 40px;
@@ -18,7 +18,6 @@
   background-color: green;
   width: 50px;
   padding: 8px;
-
   height: 40px;
   font-size: 25px;
   align-items: center;
@@ -28,7 +27,7 @@
   /* margin-left: 20px; */
 }
 
-.reviews {
+/* .reviews {
   display: flex;
   margin-top: 30px;
   font-size: 20px;
@@ -43,12 +42,25 @@
 
 .negative {
   color: red;
-}
+} */
 
 .user-score {
   margin-left: 130px;
 }
-.list-name {
+.title {
   margin-top: 20px;
   font-size: 25px;
+  display: flex;
+}
+
+.see-all {
+  margin-left: 290px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.see-alls {
+  margin-left: 310px;
+  cursor: pointer;
+  opacity: 0.7;
 }

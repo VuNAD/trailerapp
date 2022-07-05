@@ -1,12 +1,10 @@
 import React, { Fragment } from "react";
-import NavBar from "../../navbar/NavBar";
 import classes from "./trailer.module.css";
 import TrailerDetails from "./details/TrailerDetails";
 import Score from "./score/Score";
 const Trailer = () => {
   return (
     <Fragment>
-      <NavBar />
       <div className={classes.main}>
         <img
           src="https://o.rada.vn/data/image/2022/05/05/doctor-strange-ii-7.jpg"

@@ -6,7 +6,7 @@ const HighestRated = (props) => {
   return (
     <div className={classes.main}>
       <div className={classes.box}>
-        <img src={props.img} alt="" />
+        <img src={props.img} alt=""  className={classes.image}/>
         <div className={classes.content}>
           <div className={classes.scores}>
             <StarIcon className={classes.icon} />

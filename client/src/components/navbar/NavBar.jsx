@@ -28,6 +28,8 @@ const NavBar = (props) => {
           <button className={classes["watch-list"]}>Watch List</button>
           {/* <button className={classes.register}>Register</button> */}
           { !auth.isLoggedIn && (<button className={classes["sign-in"]}>Log in</button>)}
+          { auth.isLoggedIn && (<button className={classes["sign-out"]}>Log out</button>)}
+
         </div>
       </div>
     </div>

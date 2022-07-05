@@ -41,18 +41,18 @@ const LIST_TRAILERS = [
     img: "https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/2/16/generic-poster-1645005383930439832060.jpg",
     rating: 7.4,
   },
-  // {
-  //   id: "i7",
-  //   name: "Doctor Strange in the Multiverse of Madness",
-  //   img: "https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/2/16/generic-poster-1645005383930439832060.jpg",
-  //   rating: 7.4,
-  // },
-  // {
-  //   id: "i8",
-  //   name: "Doctor Strange in the Multiverse of Madness",
-  //   img: "https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/2/16/generic-poster-1645005383930439832060.jpg",
-  //   rating: 7.4,
-  // },
+  {
+    id: "i7",
+    name: "Doctor Strange in the Multiverse of Madness",
+    img: "https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/2/16/generic-poster-1645005383930439832060.jpg",
+    rating: 7.4,
+  },
+  {
+    id: "i8",
+    name: "Doctor Strange in the Multiverse of Madness",
+    img: "https://kenh14cdn.com/thumb_w/620/203336854389633024/2022/2/16/generic-poster-1645005383930439832060.jpg",
+    rating: 7.4,
+  },
   // {
   //   id: "i9",
   //   name: "Doctor Strange in the Multiverse of Madness",

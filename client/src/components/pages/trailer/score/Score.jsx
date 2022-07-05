@@ -1,10 +1,12 @@
 import React from "react";
 import classes from "./score.module.css";
-import ListReviews from "./listReviews/ListReviews";
-const REVIEWS = [
+import ExpertReviews from "./listReviews/ExpertReviews";
+import UserReviews from "./listReviews/UserReviews";
+
+const EXPERT_REVIEWS = [
   {
     id: "r1",
-    name: "Vu",
+    name: "Vu Nguyen Anh",
     review:
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 80,
@@ -13,7 +15,7 @@ const REVIEWS = [
   },
   {
     id: "r2",
-    name: "Vu",
+    name: "Vu Nguyen Anh",
     review:
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 80,
@@ -22,7 +24,7 @@ const REVIEWS = [
   },
   {
     id: "r3",
-    name: "Vu",
+    name: "Vu Nguyen Anh",
     review:
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 80,
@@ -31,7 +33,7 @@ const REVIEWS = [
   },
   {
     id: "r4",
-    name: "Vu",
+    name: "Vu Nguyen Anh",
     review:
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 80,
@@ -40,7 +42,7 @@ const REVIEWS = [
   },
   {
     id: "r5",
-    name: "Vu",
+    name: "Vu Nguyen Anh",
     review:
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 80,
@@ -49,7 +51,7 @@ const REVIEWS = [
   },
   {
     id: "r6",
-    name: "Vu",
+    name: "Vu Nguyen Anh",
     review:
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 80,
@@ -58,7 +60,7 @@ const REVIEWS = [
   },
   {
     id: "r7",
-    name: "Vu",
+    name: "Vu Nguyen Anh",
     review:
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 80,
@@ -67,7 +69,7 @@ const REVIEWS = [
   },
   {
     id: "r8",
-    name: "Vu",
+    name: "Vu Nguyen Anh",
     review:
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 80,
@@ -75,10 +77,94 @@ const REVIEWS = [
     isExpert: true,
   },
 ];
-//var expertScore = 0;
 
-const reviewList = REVIEWS.map((review) => (
-  <ListReviews
+const USER_REVIEWS = [
+  {
+    id: "r1",
+    name: "Vu Nguyen Anh",
+    review:
+      "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
+    score: 10,
+    date: "05/22/2022",
+    isExpert: true,
+  },
+  {
+    id: "r2",
+    name: "Vu Nguyen Anh",
+    review:
+      "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
+    score: 8,
+    date: "05/22/2022",
+    isExpert: true,
+  },
+  {
+    id: "r3",
+    name: "Vu Nguyen Anh",
+    review:
+      "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
+    score: 8,
+    date: "05/22/2022",
+    isExpert: true,
+  },
+  {
+    id: "r4",
+    name: "Vu Nguyen Anh",
+    review:
+      "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
+    score: 8,
+    date: "05/22/2022",
+    isExpert: true,
+  },
+  {
+    id: "r5",
+    name: "Vu Nguyen Anh",
+    review:
+      "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
+    score: 8,
+    date: "05/22/2022",
+    isExpert: true,
+  },
+  {
+    id: "r6",
+    name: "Vu Nguyen Anh",
+    review:
+      "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
+    score: 8,
+    date: "05/22/2022",
+    isExpert: true,
+  },
+  {
+    id: "r7",
+    name: "Vu Nguyen Anh",
+    review:
+      "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
+    score: 8,
+    date: "05/22/2022",
+    isExpert: true,
+  },
+  {
+    id: "r8",
+    name: "Vu Nguyen Anh",
+    review:
+      "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
+    score: 8,
+    date: "05/22/2022",
+    isExpert: true,
+  },
+];
+
+const expertReviewList = EXPERT_REVIEWS.map((review) => (
+  <ExpertReviews
+    key={review.id}
+    name={review.name}
+    review={review.review}
+    score={review.score}
+    date={review.date}
+  />
+));
+
+const userReviewList = USER_REVIEWS.map((review) => (
+  <UserReviews
     key={review.id}
     name={review.name}
     review={review.review}
@@ -88,40 +174,21 @@ const reviewList = REVIEWS.map((review) => (
 ));
 
 const Score = () => {
-  // for (const id in REVIEWS) {
-  //   if (id.isExpert) {
-  //     expertScore = expertScore + id.score;
-  //   }
-  // }
-  //console.log(expertScore);
   return (
     <div className={classes.main}>
       <div className={classes["expert-score"]}>
-        <div className={classes.title}>EXPERT SCORE</div>
-        <div className={classes.reviews}>
-          <div className={classes["box-scores"]}>100</div>
-          <div className={classes["review-count"]}>
-            <div className={classes.positive}>POSITIVE: 5 REVIEWS</div>
-            <div className={classes.mixed}>MIXED: 5 REVIEWS</div>
-            <div className={classes.negative}>NEGATIVE: 5 REVIEWS</div>
-          </div>
+        <div className={classes.title}>
+          Expert reviews
+          <span className={classes["see-all"]}>See All</span>
         </div>
-        <div className={classes["list-name"]}>Expert reviews</div>
-        {reviewList}
+        {expertReviewList}
       </div>
-
       <div className={classes["user-score"]}>
-        <div className={classes.title}>USER SCORE</div>
-        <div className={classes.reviews}>
-          <div className={classes["box-scores"]}>10</div>
-          <div className={classes["review-count"]}>
-            <div className={classes.positive}>POSITIVE: 5 REVIEWS</div>
-            <div className={classes.mixed}>MIXED: 5 REVIEWS</div>
-            <div className={classes.negative}>NEGATIVE: 5 REVIEWS</div>
-          </div>
+        <div className={classes.title}>
+          User reviews
+          <span className={classes["see-alls"]}>See All</span>
         </div>
-        <div className={classes["list-name"]}>User reviews</div>
-        {reviewList}
+        {userReviewList}
       </div>
     </div>
   );

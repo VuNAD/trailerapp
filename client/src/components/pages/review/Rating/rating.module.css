@@ -1,0 +1,55 @@
+.main {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+.content {
+  background: #fff;
+  width: 100%;
+  color: black;
+  border-radius: 10px;
+  /* justify-content: center; */
+}
+.rate {
+  display: flex;
+}
+.star-rating {
+  margin-left: 30%;
+}
+
+.review {
+  width: 95%;
+  border-radius: 6px;
+  height: 100px;
+  font-size: 16px;
+}
+
+.on {
+  color: orange;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  border: none;
+}
+.off {
+  color: #ccc;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.submit {
+  border: 2px solid black;
+  color: white;
+  /* justify-content: center; */
+  /* width: 30px; */
+  font-size: 18px;
+  background-color: green;
+  /* display: inline; */
+  cursor: pointer;
+}
+
+.wrapper{
+  justify-content: center;
+  display: flex;
+}
