@@ -3,7 +3,6 @@ import classes from "./watchList.module.css";
 import Poster from "../../poster/Poster";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Fragment } from "react";
 const LIST_TRAILERS = [
   {
     id: "i1",

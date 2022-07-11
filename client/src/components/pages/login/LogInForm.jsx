@@ -9,7 +9,6 @@ import Input from "../../form/Input";
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
-  VALIDATOR_REQUIRE,
 } from "../../util/validators";
 
 const LogInForm = () => {

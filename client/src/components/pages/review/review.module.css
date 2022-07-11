@@ -2,10 +2,10 @@
   background-color: var(--main-color);
   width: 100%;
   color: white;
-  height: 1080px;
+  margin-left: 200px;
+
 }
 .container {
-  margin-left: 200px;
   margin-top: 60px;
 }
 .name {

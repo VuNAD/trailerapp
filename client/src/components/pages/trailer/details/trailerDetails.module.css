@@ -7,6 +7,14 @@
   display: flex;
   margin-top: 50px;
 }
+.read-or-hide {
+  color: rgb(69, 69, 253);
+  cursor: pointer;
+}
+.read-or-hide:hover {
+  color: #676fc6;
+  
+}
 .poster {
   width: 225px;
   height: 350px;
@@ -23,7 +31,7 @@
   margin-top: 20px;
 }
 .summary {
-  width: 550px;
+  width: 600px;
   height: max-content;
   margin-top: 20px;
 }
@@ -35,10 +43,9 @@
 }
 
 .actor-container{
-    /* display: flex; */
     color: white;
     margin-left: 354px;
-
+    margin-top: 20px;
 }
 .title{
     margin-left: 30px;

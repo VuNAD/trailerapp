@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./review.module.css";
 import AddReview from "./AddReview/AddReview";
+import ListUser from "./list-review/user-review/ListUser";
+import ListExpert from "./list-review/expert-review/ListExpert";
 const Review = () => {
   return (
     <div className={classes.review}>
@@ -9,12 +11,12 @@ const Review = () => {
         <div className={classes.date}>Release date: April 22, 2022</div>
         <div className={classes.all}>
           <div className={classes["all-scores"]}>
-            <div className={classes.expert}>
+            {/* <div className={classes.expert}>
               <div className={classes.score}>
                 <div className={classes.expertScore}>100</div>
               </div>
               <div className={classes.title}>Expert Score</div>
-            </div>
+            </div> */}
             <div className={classes.user}>
               <div className={classes.score}>
                 <div className={classes.userScore}>100</div>
@@ -31,6 +33,9 @@ const Review = () => {
         </div>
       </div>
       <AddReview/>
+      <ListUser/>
+      <ListExpert/>
+
     </div>
   );
 };

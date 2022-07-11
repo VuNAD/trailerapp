@@ -177,18 +177,14 @@ const Score = () => {
   return (
     <div className={classes.main}>
       <div className={classes["expert-score"]}>
-        <div className={classes.title}>
-          Expert reviews
-          <span className={classes["see-all"]}>See All</span>
-        </div>
+        <div className={classes.title}>Expert reviews</div>
         {expertReviewList}
+        <div className={classes.more}>SEE MORE</div>
       </div>
       <div className={classes["user-score"]}>
-        <div className={classes.title}>
-          User reviews
-          <span className={classes["see-alls"]}>See All</span>
-        </div>
+        <div className={classes.title}>User reviews</div>
         {userReviewList}
+        <div className={classes.more}>SEE MORE</div>
       </div>
     </div>
   );

@@ -1,0 +1,31 @@
+.main {
+  background-color: black;
+  color: white;
+}
+
+.container {
+  display: flex;
+  margin-top: 35px;
+}
+
+.poster {
+  width: 810px;
+  height: 448px;
+}
+.up-next{
+  width: max-content;
+  font-size: 20px;
+  margin-left: 80px;
+}
+
+.text {
+  color: rgb(239, 169, 39);
+}
+
+.list-trailer {
+  justify-content: center;
+  width: 380px;
+  height: 424px;
+  background-color: 	#101010;
+  /* background-color: wheat; */
+}

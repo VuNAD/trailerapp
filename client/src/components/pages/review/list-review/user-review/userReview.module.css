@@ -1,0 +1,55 @@
+.userReview {
+  margin-top: 30px;
+  display: flex;
+  color: white;
+  width: 850px;
+  background-color: rgb(53, 53, 52);
+  border-radius: 5px;
+}
+
+.title{
+  margin-top: 20px;
+  font-size: 22px;
+}
+
+.score {
+  padding: 14px;
+  border-radius: 50%;
+  font-size: 32px;
+  width: 55px;
+  height: 40px;
+  /* width: max-content; */
+  background-color: green;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.container{
+    margin-left: 30px;
+    /* width: 100%; */
+
+}
+.title {
+  font-size: 22px;
+}
+
+.author-date {
+  display: flex;
+}
+
+.author{
+    font-size: 22px;
+    width: 625px;
+}
+
+/* .date{
+    position: fixed;
+    margin-left: 200px;
+    transform: translateX(480px) translateY(5px);
+    right: 0;
+} */
+
+.content{
+    margin-top: 10px;
+}

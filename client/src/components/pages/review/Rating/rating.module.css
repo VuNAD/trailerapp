@@ -1,26 +1,30 @@
 .main {
-  width: 100%;
+  width: 800px;
   background: rgba(0, 0, 0, 0.5);
+  height: max-content;
 }
 .content {
   background: #fff;
   width: 100%;
   color: black;
   border-radius: 10px;
-  /* justify-content: center; */
 }
+
 .rate {
   display: flex;
+  margin-left: 20px;
 }
 .star-rating {
-  margin-left: 30%;
+  margin-left: 27%;
 }
 
 .review {
   width: 95%;
   border-radius: 6px;
-  height: 100px;
+  height: 150px;
   font-size: 16px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .on {
@@ -41,15 +45,12 @@
 .submit {
   border: 2px solid black;
   color: white;
-  /* justify-content: center; */
-  /* width: 30px; */
   font-size: 18px;
   background-color: green;
-  /* display: inline; */
   cursor: pointer;
 }
 
-.wrapper{
+.wrapper {
   justify-content: center;
   display: flex;
 }

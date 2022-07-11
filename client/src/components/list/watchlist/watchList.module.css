@@ -9,11 +9,10 @@
 .title {
     color: orange;
     font-size: 30px;
-    margin-left: 90px;
+    /* margin-left: 90px; */
 }
 
 .container {
-    /* display: flex; */
     background-color: var(--main-color);
     width: 80%;
     padding: 0px 0px 0px 70px;

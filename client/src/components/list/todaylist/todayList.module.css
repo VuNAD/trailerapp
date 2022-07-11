@@ -1,0 +1,11 @@
+.today {
+  background-color: var(--main-color);
+  /* background-color: black; */
+  /* width: 95%; */
+  margin-top: 20px;  
+}
+.name{
+    color: Orange;
+    font-size: 26px;
+    margin-bottom: 20px;
+}

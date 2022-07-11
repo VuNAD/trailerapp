@@ -1,14 +1,18 @@
 .addReview {
   background-color: var(--main-color);
   color: white;
-  margin-left: 200px;
+  /* margin-left: 200px; */
   margin-top: 100px;
 }
 
-.review-box{
-    font-size: 20px;
-    border: 5px solid white;
-    border-radius: 4px;
-    width: 800px;
-    background-color: gray;
+.review-box {
+  font-size: 20px;
+  border: 5px solid white;
+  border-radius: 4px;
+  /* width: 800px; */
+  /* width: 100%; */
+  width: max-content;
+  height: max-content;
+  background-color: gray;
+  justify-content: center;
 }

@@ -1,11 +1,12 @@
-import React, { Fragment } from "react";
+import React from "react";
 import classes from "./trailer.module.css";
 import TrailerDetails from "./details/TrailerDetails";
 import Score from "./score/Score";
+import Image from "./../trailer/score/image/Image"
 const Trailer = () => {
   return (
-    <Fragment>
-      <div className={classes.main}>
+    <div className={classes.main}>
+      <div className={classes.content}>
         <img
           src="https://o.rada.vn/data/image/2022/05/05/doctor-strange-ii-7.jpg"
           alt=""
@@ -14,7 +15,7 @@ const Trailer = () => {
 
         <div className={classes.scores}>
           <div className={classes.wrapper}>
-            <div className={classes.content}>
+            <div className={classes.note}>
               <div className={classes.name}>Doctor Strange</div>
               <div className={classes.year}>2022</div>
             </div>
@@ -46,8 +47,9 @@ const Trailer = () => {
         </div>
       </div>
       <TrailerDetails />
+      <Image/>
       <Score />
-    </Fragment>
+    </div>
   );
 };
 

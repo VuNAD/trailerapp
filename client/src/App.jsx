@@ -8,8 +8,8 @@ import NavBar from "./components/navbar/NavBar";
 import React, { useCallback, useState } from "react";
 import { AuthContext } from "./components/context/authContext/AuthContext";
 import Review from "./components/pages/review/Review";
-// import TrailerDetails from "./components/pages/trailer/details/TrailerDetails";
-import Trailer from "./components/pages/trailer/Trailer"
+import Trailer from "./components/pages/trailer/Trailer";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const login = useCallback(() => {

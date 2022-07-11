@@ -4,7 +4,6 @@ import Rating from "../Rating/Rating";
 const AddReview = () => {
   return (
     <div className={classes.addReview}>
-      AddReview
       <div className={classes["review-box"]}>
         <Rating />
       </div>

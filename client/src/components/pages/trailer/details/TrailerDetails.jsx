@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./trailerDetails.module.css";
 import Actor from "../actor/Actor";
+import { useState } from "react";
 
 const ACTOR_LISTS = [
   {
@@ -47,6 +48,22 @@ const ACTOR_LISTS = [
   // },
 ];
 
+const ReadMore = ({ children }) => {
+  const text = children;
+  const [isReadMore, setIsReadMore] = useState(true);
+  const toggleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
+  return (
+    <p className={classes.text}>
+      {isReadMore ? text.slice(0, 850) : text}
+      <span onClick={toggleReadMore} className={classes["read-or-hide"]}>
+        {isReadMore ? "...Read more" : " Show less"}
+      </span>
+    </p>
+  );
+};
+
 const TrailerDetails = () => {
   const actorList = ACTOR_LISTS.map((actor, index) => (
     <Actor key={actor.id} name={actor.name} img={actor.img} role={actor.role} />
@@ -68,12 +85,28 @@ const TrailerDetails = () => {
             Release Date: April 22, 2022 | PG
           </div>
           <div className={classes.summary}>
-            Summary: Never have there been five friends as infamous as The Bad
-            Guys—dashing pickpocket Mr. Wolf (Sam Rockwell), seen-it-all
-            safecracker Mr. Snake (Marc Maron), chill master-of-disguise Mr.
-            Shark (Craig Robinson), short-fused “muscle” Mr. Piranha (Anthony
-            Ramos) and sharp-tongued expert hacker Ms. Tarantula (Awkwafina),
-            aka “Webs.” But when,… Expands
+            <ReadMore>
+              Summary: Never have there been five friends as infamous as The Bad
+              Guys—dashing pickpocket Mr. Wolf (Sam Rockwell), seen-it-all
+              safecracker Mr. Snake (Marc Maron), chill master-of-disguise Mr.
+              Shark (Craig Robinson), short-fused “muscle” Mr. Piranha (Anthony
+              Ramos) and sharp-tongued expert hacker Ms. Tarantula (Awkwafina),
+              aka “Webs.” But when,… Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Vero distinctio porro nihil unde fuga ex neque
+              quos debitis, accusamus consequatur. Expedita iure quibusdam
+              itaque nam doloremque. Fuga ipsam illo minus corrupti dolore,
+              tempore quaerat minima explicabo adipisci sint beatae ipsa?
+              Never have there been five friends as infamous as The Bad
+              Guys—dashing pickpocket Mr. Wolf (Sam Rockwell), seen-it-all
+              safecracker Mr. Snake (Marc Maron), chill master-of-disguise Mr.
+              Shark (Craig Robinson), short-fused “muscle” Mr. Piranha (Anthony
+              Ramos) and sharp-tongued expert hacker Ms. Tarantula (Awkwafina),
+              aka “Webs.” But when,… Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Vero distinctio porro nihil unde fuga ex neque
+              quos debitis, accusamus consequatur. Expedita iure quibusdam
+              itaque nam doloremque. Fuga ipsam illo minus corrupti dolore,
+              tempore quaerat minima explicabo adipisci sint beatae ipsa?
+            </ReadMore>
           </div>
           <div className={classes.genre}>
             Genre(s): Adventure, Comedy, Crime, Animation, Family

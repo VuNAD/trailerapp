@@ -1,16 +1,16 @@
 import React from "react";
 import classes from "./home.module.css";
-
-import Featured from "../../featured/Featured";
-import WatchList from "../../list/watchlist/WatchList";
+import Featured from "./featured/Featured";
+import TodayList from "../../list/todaylist/TodayList";
 const Home = () => {
   return (
-    <div className={classes.main}>
-      {/* <NavBar onShowSignIn={showSignInHandler} /> */}
-      <Featured />
-      <WatchList />
-      <WatchList />
-      <WatchList />
+    <div className={classes.home}>
+      <div className={classes.container}>
+        <Featured />
+        <TodayList />
+        <TodayList />
+        <TodayList />
+      </div>
     </div>
   );
 };
