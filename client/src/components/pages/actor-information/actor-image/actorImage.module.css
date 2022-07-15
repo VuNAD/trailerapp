@@ -1,0 +1,10 @@
+.box {
+  background-color: rgb(0, 0, 0);
+  width: 180px;
+  /* border-radius: 5px; */
+}
+
+.image {
+  height: 255px;
+  width: 180px;
+}

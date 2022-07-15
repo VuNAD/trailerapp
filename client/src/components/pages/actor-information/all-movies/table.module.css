@@ -1,0 +1,7 @@
+table {
+  border: 2px solid forestgreen;
+  height: max-content;
+  color: white;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
