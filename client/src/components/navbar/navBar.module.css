@@ -5,10 +5,6 @@
   height: 50px;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* position: fixed;
-  top: 0;
-  overflow: hidden; */
 }
 
 .container {
@@ -46,20 +42,17 @@
   border: none;
 }
 
-.search {
+/* .search {
   position: relative;
   top: 10px;
   width: 50%;
   height: 30px;
   margin-left: 100px;
-}
+} */
 
 .right {
   background-color: var(--main-color);
-  /* position: relative; */
   display: flex;
-  /* margin-left: auto; */
-  /* justify-content: center; */
   margin-left: 150px;
 }
 
@@ -70,11 +63,6 @@
   border: none;
   cursor: pointer;
   justify-content: center;
-
-  /* margin-left: 20px; */
-  /* margin-right: 20px;  */
-  /* margin-top: 0; */
-  /* width: 60px; */
 }
 
 .register {
@@ -84,7 +72,6 @@
   color: white;
   cursor: pointer;
   border: none;
-  /* margin-right: 20px; */
 }
 
 .sign-in,

@@ -2,9 +2,9 @@ import classes from "./navBar.module.css";
 import ListIcon from "@mui/icons-material/List";
 import React, { useContext } from 'react';
 import { AuthContext } from "./../context/authContext/AuthContext";
+import SearchBar from "../search/SearchBar";
 
-
-const NavBar = (props) => {
+const NavBar = () => {
   const auth = useContext(AuthContext);
 
   return (
@@ -19,11 +19,12 @@ const NavBar = (props) => {
           <ListIcon className={classes.list} />
           <button className={classes.home}>HOME</button>
         </div>
-        <input
+        {/* <input
           className={classes.search}
           type="search"
           placeholder="Search trailers..."
-        />
+        /> */}
+        <SearchBar className={classes.search}/>
         <div className={classes.right}>
           <button className={classes["watch-list"]}>Watch List</button>
           {/* <button className={classes.register}>Register</button> */}

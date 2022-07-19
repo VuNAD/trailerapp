@@ -36,19 +36,30 @@ const createTrailer = async (req, res, next) => {
     );
   }
 
-  const { name, description, genre, actor, director, trailerURL } = req.body;
-
-  const createdTrailer = new Trailer({
+  const {
     name,
-    description,
+    summary,
+    releaseDate,
     genre,
     actor,
     director,
     trailerURL,
+    trailerPoster,
+  } = req.body;
+
+  const createdTrailer = new Trailer({
+    name,
+    summary,
+    releaseDate,
+    genre,
+    actor,
+    director,
+    trailerURL,
+    trailerPoster,
   });
 
   try {
-    createdTrailer.save();
+    await createdTrailer.save();
   } catch (err) {
     const error = new HttpError("Create trailer failed", 500);
     return next(error);
@@ -62,7 +73,7 @@ const updateTrailer = async (req, res, next) => {
     throw new HttpError("Invalid inputs passed, please check your data.", 422);
   }
 
-  const { name, description, genre, actor, director, trailerURL } = req.body;
+  const { name, summary,releaseDate, genre, actor, director, trailerURL,trailerPoster } = req.body;
   const trailerId = req.params.tid;
 
   let trailer;
@@ -77,11 +88,13 @@ const updateTrailer = async (req, res, next) => {
   }
 
   trailer.name = name;
-  trailer.description = description;
+  trailer.summary = summary;
+  trailer.releaseDate = releaseDate;
   trailer.genre = genre;
   trailer.actor = actor;
   trailer.director = director;
   trailer.trailerURL = trailerURL;
+  trailer.trailerPoster = trailerPoster;
 
   try {
     await trailer.save();

@@ -1,5 +1,6 @@
 .home {
     background-color: var(--main-color);
+    /* display: flex; */
 }
 
 .container{

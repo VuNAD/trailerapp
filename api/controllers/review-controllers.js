@@ -1,12 +1,11 @@
 const { validationResult } = require("express-validator");
-// import mongoose from "mongoose";
 
 const HttpError = require("../models/http-error");
-const mongoose =require("mongoose");
+// const mongoose = require("mongoose");
 
 const Review = require("../models/review");
-const User = require("../models/user");
-const Trailer = require("../models/trailer");
+// const User = require("../models/user");
+// const Trailer = require("../models/trailer");
 
 const createReview = async (req, res, next) => {
   const errors = validationResult(req);
@@ -15,7 +14,6 @@ const createReview = async (req, res, next) => {
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-
   const { author, title, rating, trailerName } = req.body;
 
   const createdReview = new Review({
@@ -25,30 +23,8 @@ const createReview = async (req, res, next) => {
     trailerName,
   });
 
-  let user;
-
   try {
-    user = await User.findById(author);
-  } catch (err) {
-    const error = new HttpError("Create user failed, please try again", 500);
-  }
-
-  if (!user) {
-    const error = new HttpError("User not  by provided id", 500);
-    return next(error);
-  }
-
-  console.log(user);
-
-  try {
-    // createdReview.save();
-
-    const sess = await mongoose.startSession();
-    sess.startTransaction();
-    await createdReview.save({ session: sess });
-    review.author.push(createdReview);
-    await review.save({ session: sess });
-    await sess.commitTransaction();
+    await createdReview.save();
   } catch (err) {
     const error = new HttpError("Create review failed", 500);
     return next(error);
