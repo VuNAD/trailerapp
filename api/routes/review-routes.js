@@ -20,4 +20,6 @@ router.delete("/:rid", reviewController.deleteReview);
 
 router.get("/:rid", reviewController.getReviewById);
 
+router.get("/user/:uid", reviewController.getReviewsByUserId);
+
 module.exports = router;

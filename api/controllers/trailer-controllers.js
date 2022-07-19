@@ -45,6 +45,7 @@ const createTrailer = async (req, res, next) => {
     director,
     trailerURL,
     trailerPoster,
+    reviews
   } = req.body;
 
   const createdTrailer = new Trailer({
@@ -56,6 +57,7 @@ const createTrailer = async (req, res, next) => {
     director,
     trailerURL,
     trailerPoster,
+    reviews
   });
 
   try {

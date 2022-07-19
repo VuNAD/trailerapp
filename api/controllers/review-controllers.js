@@ -1,11 +1,11 @@
 const { validationResult } = require("express-validator");
 
 const HttpError = require("../models/http-error");
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 const Review = require("../models/review");
-// const User = require("../models/user");
-// const Trailer = require("../models/trailer");
+const User = require("../models/user");
+const Trailer = require("../models/trailer");
 
 const createReview = async (req, res, next) => {
   const errors = validationResult(req);
@@ -23,12 +23,45 @@ const createReview = async (req, res, next) => {
     trailerName,
   });
 
+  let user;
+
   try {
-    await createdReview.save();
+    user = await User.findById(author);
   } catch (err) {
-    const error = new HttpError("Create review failed", 500);
+    const error = new Error("Cannot review this trailer", 500);
     return next(error);
   }
+
+  if (!user) {
+    const error = new HttpError("Could not find user for provided id", 404);
+    return next(error);
+  }
+
+  
+
+  console.log(user);
+
+  try {
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await createdReview.save({ session: sess });
+    user.reviews.push(createdReview);
+    await user.save({ session: sess });
+    await sess.commitTransaction();
+  } catch (err) {
+    const error = new HttpError(
+      "Review this trailer failed, please try again.",
+      500
+    );
+    return next(error);
+  }
+
+  // try {
+  //   await createdReview.save();
+  // } catch (err) {
+  //   const error = new HttpError("Create review failed", 500);
+  //   return next(error);
+  // }
   res.status(201).json({ review: createdReview });
 };
 
@@ -57,12 +90,41 @@ const getReviewById = async (req, res, next) => {
   res.json({ review: review.toObject({ getters: true }) });
 };
 
+const getReviewsByUserId = async (req, res, next) => {
+  const userId = req.params.uid;
+
+  // let places;
+  let userWithReviews;
+  try {
+    userWithReviews = await User.findById(userId).populate('reviews');
+  } catch (err) {
+    const error = new HttpError(
+      'Fetching reviews failed, please try again later',
+      500
+    );
+    return next(error);
+  }
+
+  // if (!places || places.length === 0) {
+  if (!userWithReviews || userWithReviews.reviews.length === 0) {
+    return next(
+      new HttpError('Could not find places for the provided user id.', 404)
+    );
+  }
+
+  res.json({
+    reviews: userWithReviews.reviews.map(review =>
+      review.toObject({ getters: true })
+    )
+  });
+};
+
 const deleteReview = async (req, res, next) => {
   const reviewId = req.params.rid;
 
   let review;
   try {
-    review = await Review.findById(reviewId);
+    review = await Review.findById(reviewId).populate("author");
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not delete review.",
@@ -71,8 +133,19 @@ const deleteReview = async (req, res, next) => {
     return next(error);
   }
 
+  if (!review) {
+    const error = new HttpError("Could not find review for this id.", 404);
+    return next(error);
+  }
+
   try {
-    await review.remove();
+    // await review.remove();
+    const sess = await mongoose.startSession();
+    sess.startTransaction();
+    await review.remove({ session: sess });
+    review.author.reviews.pull(review);
+    await review.author.save({ session: sess });
+    await sess.commitTransaction();
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not delete review.",
@@ -87,3 +160,4 @@ const deleteReview = async (req, res, next) => {
 exports.createReview = createReview;
 exports.deleteReview = deleteReview;
 exports.getReviewById = getReviewById;
+exports.getReviewsByUserId = getReviewsByUserId;
