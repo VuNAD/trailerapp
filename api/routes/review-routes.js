@@ -12,7 +12,7 @@ router.post(
     check("author").not().isEmpty(),
     check("title").not().isEmpty(),
     check("rating").not().isEmpty(),
-    check("trailerName").not().isEmpty(),
+    check("trailerID").not().isEmpty(),
   ],
   reviewController.createReview
 );

@@ -6,7 +6,7 @@ const reviewScheme = new mongoose.Schema(
     author:{type: mongoose.Types.ObjectId, required: true, ref: 'User'},
     title: { type: String, required: true },
     rating: { type: Number, required: true },
-    trailerName: { type: String, required: true },
+    trailerID: { type: mongoose.Types.ObjectId, required: true, ref: 'Trailer' },
   },
   { timestamps: true }
 );

@@ -10,6 +10,7 @@ const trailerSchema = new mongoose.Schema({
   director: { type: String, required: true },
   trailerURL: { type: String, required: true },
   trailerPoster: { type: String, required: true },
+  rating: { type: Number, default: 0 },
   reviews: [{ type: mongoose.Types.ObjectId, default: null, ref: "Review" }],
 });
 

@@ -14,13 +14,13 @@ const createReview = async (req, res, next) => {
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  const { author, title, rating, trailerName } = req.body;
+  const { author, title, rating, trailerID } = req.body;
 
   const createdReview = new Review({
     author,
     title,
     rating,
-    trailerName,
+    trailerID,
   });
 
   let user;
@@ -37,16 +37,32 @@ const createReview = async (req, res, next) => {
     return next(error);
   }
 
-  
-
   console.log(user);
+
+  let trailer;
+
+  try {
+    trailer = await Trailer.findById(trailerID);
+  } catch (err) {
+    const error = new Error("Cannot review with this trailerID", 500);
+    return next(error);
+  }
+
+  if (!trailer) {
+    const error = new HttpError("Could not find trailer for provided id", 404);
+    return next(error);
+  }
+
+  console.log(trailer);
 
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
     await createdReview.save({ session: sess });
     user.reviews.push(createdReview);
+    trailer.reviews.push(createdReview);
     await user.save({ session: sess });
+    await trailer.save({ session: sess });
     await sess.commitTransaction();
   } catch (err) {
     const error = new HttpError(
@@ -96,10 +112,10 @@ const getReviewsByUserId = async (req, res, next) => {
   // let places;
   let userWithReviews;
   try {
-    userWithReviews = await User.findById(userId).populate('reviews');
+    userWithReviews = await User.findById(userId).populate("reviews");
   } catch (err) {
     const error = new HttpError(
-      'Fetching reviews failed, please try again later',
+      "Fetching reviews failed, please try again later",
       500
     );
     return next(error);
@@ -108,14 +124,14 @@ const getReviewsByUserId = async (req, res, next) => {
   // if (!places || places.length === 0) {
   if (!userWithReviews || userWithReviews.reviews.length === 0) {
     return next(
-      new HttpError('Could not find places for the provided user id.', 404)
+      new HttpError("Could not find review(s) for the provided user id.", 404)
     );
   }
 
   res.json({
-    reviews: userWithReviews.reviews.map(review =>
+    reviews: userWithReviews.reviews.map((review) =>
       review.toObject({ getters: true })
-    )
+    ),
   });
 };
 
@@ -124,7 +140,7 @@ const deleteReview = async (req, res, next) => {
 
   let review;
   try {
-    review = await Review.findById(reviewId).populate("author");
+    review = await Review.findById(reviewId).populate(["author","trailerID"]);
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not delete review.",
@@ -144,7 +160,10 @@ const deleteReview = async (req, res, next) => {
     sess.startTransaction();
     await review.remove({ session: sess });
     review.author.reviews.pull(review);
+    review.trailerID.reviews.pull(review);
     await review.author.save({ session: sess });
+    await review.trailerID.save({ session: sess });
+
     await sess.commitTransaction();
   } catch (err) {
     const error = new HttpError(
