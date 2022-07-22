@@ -6,15 +6,12 @@ import { useForm } from "../../../hooks/form-hook";
 import classes from "./login.module.css";
 import { AuthContext } from "./../../context/authContext/AuthContext";
 import Input from "../../form/Input";
-import {
-  VALIDATOR_EMAIL,
-  VALIDATOR_MINLENGTH,
-} from "../../util/validators";
+import { VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from "../../util/validators";
 
 const LogInForm = () => {
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
   const [formState, inputHandler, setFormData] = useForm(
@@ -31,10 +28,10 @@ const LogInForm = () => {
     false
   );
 
-  const authSubmitHandler = async (event) => {
+  const loginSubmitHandler = async (event) => {
     event.preventDefault();
 
-    setIsLoading(true);
+    // setIsLoading(true);
 
     if (isLoginMode) {
       try {
@@ -56,7 +53,7 @@ const LogInForm = () => {
         console.log("Successfully logged in");
         auth.login();
       } catch (err) {
-        setIsLoading(false);
+        // setIsLoading(false);
         setError(err.message || "Something went wrong, please try again.");
       }
     }
@@ -64,7 +61,7 @@ const LogInForm = () => {
 
   return (
     <div className={classes.main}>
-      <form onSubmit={authSubmitHandler}>
+      <form onSubmit={loginSubmitHandler}>
         <Input
           element="input"
           id="email"
@@ -79,7 +76,7 @@ const LogInForm = () => {
           id="password"
           type="password"
           label="Password"
-          validators={[VALIDATOR_MINLENGTH(5)]}
+          validators={[VALIDATOR_MINLENGTH(6)]}
           errorText="Please enter a valid password, at least 5 characters."
           onInput={inputHandler}
         />

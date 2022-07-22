@@ -10,7 +10,7 @@ const register = async (req, res, next) => {
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  const { name, email, password } = req.body;
+  const { username, email, password } = req.body;
 
   let existingUser;
   try {
@@ -32,10 +32,9 @@ const register = async (req, res, next) => {
   }
 
   const createdUser = new User({
-    name,
+    username,
     email,
     password,
-    // avatarUrl,
     review: [],
   });
 

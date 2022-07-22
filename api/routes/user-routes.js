@@ -9,7 +9,7 @@ const router = express.Router();
 router.post(
   "/register",
   [
-    check("name").not().isEmpty(),
+    check("username").not().isEmpty(),
     check("email").normalizeEmail().isEmail(), //Check is Email or not
     check("password").not().isEmpty(),
   ],
@@ -19,6 +19,5 @@ router.post(
 router.get("/", userController.getUsers);
 
 router.post("/login", userController.login);
-
 
 module.exports = router;
