@@ -1,6 +1,7 @@
 .star {
-  background-color: var(--main-color);
-  color: yellow;
+  /* background-color: var(--main-color); */
+  /* color: yellow; */
+  margin-left: 27%;
 }
 .comments-title {
   font-size: 30px;
@@ -54,7 +55,9 @@
 }
 
 .comment {
+  /* border: solid 2px white; */
   border-radius: 5px;
+  background-color: transparent;
   background-color: rgb(87, 85, 85);
   margin-top: 10px;
   width: 55%;
@@ -67,6 +70,8 @@
 
 .comment-date {
   color: black;
+  /* margin-right: 0; */
+  right: 0;
 }
 .comment-image-container {
   margin-right: 12px;
@@ -77,15 +82,16 @@
   width: 30px;
 }
 
-.comment-right-part {
+/* .comment-right-part {
   width: 250px;
-  /* display: flex; */
-}
+  display: flex;
+} */
 .comment-parent {
   display: flex;
 }
 .comment-content {
   margin-left: 30px;
+  /* width: 100%; */
 }
 
 .author-date {
@@ -93,7 +99,8 @@
   margin-top: 10px;
 }
 .comment-author {
-  font-size: 22px;
+  font-size: 26px;
+  color: rgb(125, 0, 0);
   width: 425px;
   /* width: 300px; */
 }
@@ -103,11 +110,11 @@
   margin-left: 200px;
 }
 .comment-rating {
+  /* padding: 10px; */
   padding: 10px;
-  padding: 13px;
   border-radius: 50%;
   font-size: 32px;
-  width: 55px;
+  width: 40px;
   height: 40px;
   /* width: max-content; */
   background-color: green;
@@ -154,4 +161,18 @@
 
 img {
   width: 50px;
+}
+.on {
+  color: orange;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  border: none;
+}
+.off {
+  color: #ccc;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import classes from "./expertReviews.module.css";
-const ExpertReviews = (props) => {
+import classes from "./recentReviews.module.css";
+const RecentReviews = (props) => {
   return (
     <div className={classes.main}>
       <div className={classes.container}>
@@ -17,4 +17,4 @@ const ExpertReviews = (props) => {
   );
 };
 
-export default ExpertReviews;
+export default RecentReviews;

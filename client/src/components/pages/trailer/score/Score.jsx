@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./score.module.css";
-import ExpertReviews from "./listReviews/ExpertReviews";
+import RecentReviews from "./listReviews/RecentReviews";
 import UserReviews from "./listReviews/UserReviews";
-
-const EXPERT_REVIEWS = [
+import { Link } from "react-router-dom";
+const RECENT_REVIEWS = [
   {
     id: "r1",
     name: "Vu Nguyen Anh",
@@ -86,7 +86,7 @@ const USER_REVIEWS = [
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 10,
     date: "05/22/2022",
-    isExpert: true,
+    // isExpert: true,
   },
   {
     id: "r2",
@@ -95,7 +95,7 @@ const USER_REVIEWS = [
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 8,
     date: "05/22/2022",
-    isExpert: true,
+    // isExpert: true,
   },
   {
     id: "r3",
@@ -104,7 +104,7 @@ const USER_REVIEWS = [
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 8,
     date: "05/22/2022",
-    isExpert: true,
+    // isExpert: true,
   },
   {
     id: "r4",
@@ -113,7 +113,7 @@ const USER_REVIEWS = [
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 8,
     date: "05/22/2022",
-    isExpert: true,
+    // isExpert: true,
   },
   {
     id: "r5",
@@ -122,7 +122,7 @@ const USER_REVIEWS = [
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 8,
     date: "05/22/2022",
-    isExpert: true,
+    // isExpert: true,
   },
   {
     id: "r6",
@@ -131,7 +131,7 @@ const USER_REVIEWS = [
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 8,
     date: "05/22/2022",
-    isExpert: true,
+    // isExpert: true,
   },
   {
     id: "r7",
@@ -140,7 +140,7 @@ const USER_REVIEWS = [
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 8,
     date: "05/22/2022",
-    isExpert: true,
+    // isExpert: true,
   },
   {
     id: "r8",
@@ -149,12 +149,14 @@ const USER_REVIEWS = [
       "Some people will dismiss the film as nonsense, and they could have a point. But Doctor Strange in the Multiverse of Madness is a huge amount of fun.",
     score: 8,
     date: "05/22/2022",
-    isExpert: true,
+    // isExpert: true,
   },
 ];
 
-const expertReviewList = EXPERT_REVIEWS.map((review) => (
-  <ExpertReviews
+// const averageRating =
+
+const recentReviewList = USER_REVIEWS.map((review) => (
+  <RecentReviews
     key={review.id}
     name={review.name}
     review={review.review}
@@ -177,14 +179,18 @@ const Score = () => {
   return (
     <div className={classes.main}>
       <div className={classes["expert-score"]}>
-        <div className={classes.title}>Expert reviews</div>
-        {expertReviewList}
-        <div className={classes.more}>SEE MORE</div>
+        <div className={classes.title}>Recent reviews</div>
+        {recentReviewList}
+        <Link to={{ pathname: "/review" }} style={{ textDecoration: "none" }}>
+          <div className={classes.more}>SEE MORE</div>
+        </Link>
       </div>
       <div className={classes["user-score"]}>
         <div className={classes.title}>User reviews</div>
         {userReviewList}
-        <div className={classes.more}>SEE MORE</div>
+        <Link to={{ pathname: "/review" }} style={{ textDecoration: "none" }}>
+          <div className={classes.more}>SEE MORE</div>
+        </Link>
       </div>
     </div>
   );

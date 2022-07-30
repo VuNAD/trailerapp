@@ -5,8 +5,18 @@
   margin-left: 200px;
 
 }
+.wrapper{
+  display: flex;
+}
+.image{
+  width: 250px;
+  height: 375px;
+}
 .container {
   margin-top: 60px;
+}
+.information{
+  margin-left: 80px;
 }
 .name {
   font-size: 30px;

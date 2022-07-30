@@ -49,7 +49,7 @@ const Trailer = () => {
               <div className={classes.all}>
                 <div className={classes.user}>USER SCORE</div>
                 <div className={classes.note}>
-                  Generally favorable reviews based on 25 Critic Reviews
+                  Generally favorable reviews based on 25 User Reviews
                 </div>
               </div>
               <div className={classes["box-scores"]}>10</div>
@@ -58,7 +58,7 @@ const Trailer = () => {
         </div>
       </div>
       <TrailerDetails />
-      <Image />
+      {/* <Image /> */}
       <Score />
     </div>
   );

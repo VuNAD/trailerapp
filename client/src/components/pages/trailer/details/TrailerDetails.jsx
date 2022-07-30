@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./trailerDetails.module.css";
 import Actor from "../actor/Actor";
 import { useState } from "react";
+import {Link} from "react-router-dom"
 
 const ACTOR_LISTS = [
   {
@@ -66,7 +67,14 @@ const ReadMore = ({ children }) => {
 
 const TrailerDetails = () => {
   const actorList = ACTOR_LISTS.map((actor, index) => (
-    <Actor key={actor.id} name={actor.name} img={actor.img} role={actor.role} />
+    <Link to={{ pathname: "/actorinformation" }} style={{ textDecoration: "none" }}>
+      <Actor
+        key={actor.id}
+        name={actor.name}
+        img={actor.img}
+        role={actor.role}
+      />
+    </Link>
   ));
 
   return (
@@ -95,17 +103,17 @@ const TrailerDetails = () => {
               adipisicing elit. Vero distinctio porro nihil unde fuga ex neque
               quos debitis, accusamus consequatur. Expedita iure quibusdam
               itaque nam doloremque. Fuga ipsam illo minus corrupti dolore,
-              tempore quaerat minima explicabo adipisci sint beatae ipsa?
-              Never have there been five friends as infamous as The Bad
-              Guys—dashing pickpocket Mr. Wolf (Sam Rockwell), seen-it-all
-              safecracker Mr. Snake (Marc Maron), chill master-of-disguise Mr.
-              Shark (Craig Robinson), short-fused “muscle” Mr. Piranha (Anthony
-              Ramos) and sharp-tongued expert hacker Ms. Tarantula (Awkwafina),
-              aka “Webs.” But when,… Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Vero distinctio porro nihil unde fuga ex neque
-              quos debitis, accusamus consequatur. Expedita iure quibusdam
-              itaque nam doloremque. Fuga ipsam illo minus corrupti dolore,
-              tempore quaerat minima explicabo adipisci sint beatae ipsa?
+              tempore quaerat minima explicabo adipisci sint beatae ipsa? Never
+              have there been five friends as infamous as The Bad Guys—dashing
+              pickpocket Mr. Wolf (Sam Rockwell), seen-it-all safecracker Mr.
+              Snake (Marc Maron), chill master-of-disguise Mr. Shark (Craig
+              Robinson), short-fused “muscle” Mr. Piranha (Anthony Ramos) and
+              sharp-tongued expert hacker Ms. Tarantula (Awkwafina), aka “Webs.”
+              But when,… Lorem ipsum dolor sit amet consectetur adipisicing
+              elit. Vero distinctio porro nihil unde fuga ex neque quos debitis,
+              accusamus consequatur. Expedita iure quibusdam itaque nam
+              doloremque. Fuga ipsam illo minus corrupti dolore, tempore quaerat
+              minima explicabo adipisci sint beatae ipsa?
             </ReadMore>
           </div>
           <div className={classes.genre}>

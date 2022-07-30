@@ -1,9 +1,9 @@
 .main {
   background-color: var(--main-color);
-  width: 186px;
+  width: 183px;
   height: max-content;
   justify-self: start;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .box {

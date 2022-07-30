@@ -23,11 +23,11 @@ const Table = () => {
     }
   };
   const columns = [
-    { label: "Expert Score", accessor: "expertScore" },
+    // { label: "Expert Score", accessor: "expertScore" },
     { label: "User Score", accessor: "userScore" },
     { label: "Title", accessor: "title" },
     { label: "Role", accessor: "role" },
-    { label: "Box Office", accessor: "boxOffice" },
+    { label: "Box Office $", accessor: "boxOffice" },
     { label: "Year", accessor: "year" },
   ];
 
