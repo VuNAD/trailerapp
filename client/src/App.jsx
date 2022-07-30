@@ -27,28 +27,28 @@ function App() {
       <div className={classes.App}>
         <Router>
           <NavBar />
-          <main>
-            <Switch>
-              <Route path="/actorinformation" exact>
-                <ActorInformation />
-              </Route>
-              <Route path="/login" exact>
-                <LogInForm />
-              </Route>
-              <Route path="/register" exact>
-                <Register />
-              </Route>
-              <Route path="/review" exact>
-                <Review />
-              </Route>
-              <Route path="/trailer" exact>
-                <Trailer/>
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </main>
+          {/* <main> */}
+          <Switch>
+            <Route path="/actorinformation" exact>
+              <ActorInformation />
+            </Route>
+            <Route path="/login" exact>
+              <LogInForm />
+            </Route>
+            <Route path="/register" exact>
+              <Register />
+            </Route>
+            <Route path="/review" exact>
+              <Review />
+            </Route>
+            <Route path="/trailer" exact>
+              <Trailer />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+          {/* </main> */}
         </Router>
       </div>
     </AuthContext.Provider>

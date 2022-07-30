@@ -1,5 +1,4 @@
 const { validationResult } = require("express-validator");
-
 const HttpError = require("../models/http-error");
 const mongoose = require("mongoose");
 
@@ -8,25 +7,30 @@ const User = require("../models/user");
 const Trailer = require("../models/trailer");
 
 const createReview = async (req, res, next) => {
+  const userID = req.query.uid;
+  const trailerID = req.query.tid;
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return next(
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  const { author, title, rating, trailerID } = req.body;
+  const { title, rating } = req.query;
 
+  // const user
+
+  let user;
+  let trailer;
   const createdReview = new Review({
-    author,
+    userID,
     title,
     rating,
     trailerID,
   });
 
-  let user;
-
   try {
-    user = await User.findById(author);
+    user = await User.findById(userID);
   } catch (err) {
     const error = new Error("Cannot review this trailer", 500);
     return next(error);
@@ -38,8 +42,6 @@ const createReview = async (req, res, next) => {
   }
 
   console.log(user);
-
-  let trailer;
 
   try {
     trailer = await Trailer.findById(trailerID);
@@ -64,6 +66,10 @@ const createReview = async (req, res, next) => {
     await user.save({ session: sess });
     await trailer.save({ session: sess });
     await sess.commitTransaction();
+
+    //trailer.actors.push(actorid);
+    // trailer.actors=[...trailer.actors,...newacter]
+    // await trailer.save({ session: sess });
   } catch (err) {
     const error = new HttpError(
       "Review this trailer failed, please try again.",
@@ -140,7 +146,7 @@ const deleteReview = async (req, res, next) => {
 
   let review;
   try {
-    review = await Review.findById(reviewId).populate(["author","trailerID"]);
+    review = await Review.findById(reviewId).populate(["author", "trailerID"]);
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not delete review.",

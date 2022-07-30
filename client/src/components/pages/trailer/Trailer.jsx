@@ -2,17 +2,29 @@ import React from "react";
 import classes from "./trailer.module.css";
 import TrailerDetails from "./details/TrailerDetails";
 import Score from "./score/Score";
-import Image from "./../trailer/score/image/Image"
+import Image from "./../trailer/score/image/Image";
+
+import ReactPlayer from "react-player";
 const Trailer = () => {
   return (
     <div className={classes.main}>
       <div className={classes.content}>
-        <img
+        {/* <img
           src="https://o.rada.vn/data/image/2022/05/05/doctor-strange-ii-7.jpg"
           alt=""
           className={classes.trailer}
-        />
-
+        /> */}
+        <div className={classes.trailer}>
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=aWzlQ2N6qqg&t=1s&ab_channel=MarvelEntertainment"
+            width="833px"
+            height="450px"
+            // margin-top="35px"
+            // playing={true}
+            autoPlay={false}
+            controls={true}
+          />
+        </div>
         <div className={classes.scores}>
           <div className={classes.wrapper}>
             <div className={classes.note}>
@@ -21,7 +33,7 @@ const Trailer = () => {
             </div>
             <hr></hr>
 
-            <div className={classes["single-scores"]}>
+            {/* <div className={classes["single-scores"]}>
               <div className={classes.all}>
                 <div className={classes.user}>EXPERT SCORE</div>
                 <div className={classes.note}>
@@ -29,10 +41,9 @@ const Trailer = () => {
                 </div>
               </div>
               <div className={classes["box-scores"]}>100</div>
-            </div>
+            </div> */}
           </div>
-          <hr></hr>
-
+          {/* <hr></hr> */}
           <div className={classes.wrapper2}>
             <div className={classes["single-scores"]}>
               <div className={classes.all}>
@@ -47,7 +58,7 @@ const Trailer = () => {
         </div>
       </div>
       <TrailerDetails />
-      <Image/>
+      <Image />
       <Score />
     </div>
   );

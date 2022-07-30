@@ -19,11 +19,7 @@ const NavBar = () => {
           <ListIcon className={classes.list} />
           <button className={classes.home}>HOME</button>
         </div>
-        {/* <input
-          className={classes.search}
-          type="search"
-          placeholder="Search trailers..."
-        /> */}
+
         <SearchBar className={classes.search}/>
         <div className={classes.right}>
           <button className={classes["watch-list"]}>Watch List</button>

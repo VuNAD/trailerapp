@@ -7,21 +7,13 @@
   justify-content: center;
   flex-direction: column;
   gap: 20px;
-  height: 100vh;
+  height: 95vh;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   /* background-color: #090a0b; */
 }
 form {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-}
-.email,
-.password,
-.password2 {
-  height: 25px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  margin-top: 10px;
-  border-radius: 5px;
 }
 
 .wrapper {
@@ -31,19 +23,47 @@ form {
   box-shadow: 0 4px 8px 0 rgba(133, 133, 133, 0.2),
     0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 350px;
+  height: max-content;
 }
 
 .title {
   font-size: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  transform: translateX(15%);
 }
 
-.input-email {
+.username,
+.email,
+.password {
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.register {
+  justify-content: center;
+  display: flex;
+}
+.submit {
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  /* background: #0143d2; */
+  background-color: #0143d2 ;
+  border: 1px solid #0143d2;
+  color: #fff;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  width: 80%;
+  border-radius: 4px;
+}
+
+
+/* .input-email {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin: 10px;
-  /* width: 150px; */
 }
 
 .input-password {
@@ -51,23 +71,4 @@ form {
   flex-direction: column;
   gap: 8px;
   margin: 10px;
-}
-
-.button-signUp{
-  justify-content: center;
-  display: flex;
-
-}
-.submit {
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 15px;
-    background: #0143d2;
-    border: 1px solid #0143d2;
-    color: #fff;
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    width: 90%;
-    border-radius: 4px;
-  }
-  
+} */

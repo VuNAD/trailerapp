@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./userReview.module.css";
+// import { useEffect, useState } from "react";
 const UserReview = (props) => {
+
   return (
     <div className={classes.userReview}>
       <div className={classes.score}>{props.score}</div>
@@ -10,7 +12,7 @@ const UserReview = (props) => {
           <div className={classes.date}>{props.date}</div>
         </div>
         <div className={classes.content}>
-            <div className={classes.note}>{props.note}</div>
+          <div className={classes.note}>{props.note}</div>
         </div>
       </div>
     </div>

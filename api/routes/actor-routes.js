@@ -12,7 +12,6 @@ router.post(
     check("name").not().isEmpty(),
     check("information").not().isEmpty(),
     check("birthday").not().isEmpty(),
-    check("movie").not().isEmpty(),
   ],
   actorController.createActor
 );
@@ -23,10 +22,11 @@ router.patch(
     check("name").not().isEmpty(),
     check("birthday").not().isEmpty(),
     check("information").not().isEmpty(),
-    check("movie").not().isEmpty(),
   ],
   actorController.updateActor
 );
+
+router.post("/add-trailer",actorController.addTrailerToActor);
 
 router.delete("/:aid", actorController.deleteActor);
 

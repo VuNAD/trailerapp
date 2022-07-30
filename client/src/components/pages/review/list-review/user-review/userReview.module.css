@@ -3,14 +3,18 @@
   display: flex;
   color: white;
   width: 850px;
-  background-color: rgb(53, 53, 52);
+  height: 100px;
+  background-color: #171717;
+  /* background-color: rgb(53, 53, 52); */
   border-radius: 5px;
+  box-shadow: 0px 0px 5px 5px #373636;
+
 }
 
-.title{
+/* .title {
   margin-top: 20px;
   font-size: 22px;
-}
+} */
 
 .score {
   padding: 14px;
@@ -25,10 +29,9 @@
   margin-left: 10px;
   margin-bottom: 10px;
 }
-.container{
-    margin-left: 30px;
-    /* width: 100%; */
-
+.container {
+  margin-left: 30px;
+  /* width: 100%; */
 }
 .title {
   font-size: 22px;
@@ -36,11 +39,12 @@
 
 .author-date {
   display: flex;
+  margin-top: 10px;
 }
 
-.author{
-    font-size: 22px;
-    width: 625px;
+.author {
+  font-size: 22px;
+  width: 625px;
 }
 
 /* .date{
@@ -50,6 +54,7 @@
     right: 0;
 } */
 
-.content{
-    margin-top: 10px;
+.content {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

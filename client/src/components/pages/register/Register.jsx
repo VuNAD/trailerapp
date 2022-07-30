@@ -3,7 +3,6 @@ import classes from "./register.module.css";
 import { useContext } from "react";
 import { useHttpClient } from "../../../hooks/http-hook";
 import { AuthContext } from "./../../context/authContext/AuthContext";
-// import { useForm } from "react-hook-form";
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
@@ -11,10 +10,10 @@ import {
 } from "../../util/validators";
 import { useForm } from "../../../hooks/form-hook";
 import Input from "../../form/Input";
+// import Button from "../../button/Button";
 const Register = () => {
   const auth = useContext(AuthContext);
 
-  // const [isLoginMode, setIsLoginMode] = useState(true);
   const { sendRequest } = useHttpClient();
 
   const [formState, inputHandler] = useForm(
@@ -46,7 +45,6 @@ const Register = () => {
           username: formState.inputs.username.value,
           email: formState.inputs.email.value,
           password: formState.inputs.password.value,
-          password2: formState.inputs.password2.value,
         }),
         {
           "Content-Type": "application/json",
@@ -60,9 +58,9 @@ const Register = () => {
   return (
     <div className={classes.main}>
       <form onSubmit={registerSubmitHandler}>
-        <div className={classes["wrapper"]}>
-          <div className={classes.title}>Register</div>
-          <div className={classes["input-name"]}>
+        <div className={classes.wrapper}>
+          <div className={classes.title}>CREATE AN ACCOUNT</div>
+          <div className={classes.username}>
             <Input
               element="input"
               id="username"
@@ -73,7 +71,7 @@ const Register = () => {
               onInput={inputHandler}
             />
           </div>
-          <div className={classes["input-email"]}>
+          <div className={classes["email"]}>
             <Input
               element="input"
               id="email"
@@ -84,7 +82,7 @@ const Register = () => {
               onInput={inputHandler}
             />
           </div>
-          <div className={classes["input-password"]}>
+          <div className={classes["password"]}>
             <Input
               element="input"
               id="password"
@@ -95,18 +93,7 @@ const Register = () => {
               onInput={inputHandler}
             />
           </div>
-          <div className={classes["input-password"]}>
-            <Input
-              element="input"
-              id="password2"
-              type="password"
-              label="Password gain"
-              validators={[VALIDATOR_MINLENGTH(6)]}
-              errorText="Two password must be the same"
-              onInput={inputHandler}
-            />
-          </div>
-          <div className={classes["button-signUp"]}>
+          <div className={classes.register}>
             <button type="submit" className={classes.submit}>
               Register
             </button>

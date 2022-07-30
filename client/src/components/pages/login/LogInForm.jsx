@@ -14,7 +14,7 @@ const LogInForm = () => {
   // const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
-  const [formState, inputHandler, setFormData] = useForm(
+  const [formState, inputHandler] = useForm(
     {
       email: {
         value: "",
@@ -62,25 +62,39 @@ const LogInForm = () => {
   return (
     <div className={classes.main}>
       <form onSubmit={loginSubmitHandler}>
-        <Input
-          element="input"
-          id="email"
-          type="email"
-          label="E-Mail"
-          validators={[VALIDATOR_EMAIL()]}
-          errorText="Please enter a valid email address."
-          onInput={inputHandler}
-        />
-        <Input
-          element="input"
-          id="password"
-          type="password"
-          label="Password"
-          validators={[VALIDATOR_MINLENGTH(6)]}
-          errorText="Please enter a valid password, at least 5 characters."
-          onInput={inputHandler}
-        />
-        <button type="submit">LOGIN</button>
+        <div className={classes.wrapper}>
+          <div className={classes.title}>LOG IN TO MOVERSE</div>
+          <div className={classes.email}>
+            <Input
+              element="input"
+              id="email"
+              type="email"
+              label="E-Mail"
+              validators={[VALIDATOR_EMAIL()]}
+              errorText="Please enter a valid email address."
+              onInput={inputHandler}
+            />
+          </div>
+          <div className={classes.password}>
+            <Input
+              element="input"
+              id="password"
+              type="password"
+              label="Password"
+              validators={[VALIDATOR_MINLENGTH(6)]}
+              errorText="Please enter a valid password, at least 5 characters."
+              onInput={inputHandler}
+            />
+          </div>
+          <div className={classes.login}>
+            <button type="submit" className={classes.submit}>
+              LOGIN
+            </button>
+          </div>
+          <div className={classes.create}>
+            Not a member? Create an account
+          </div>
+        </div>
       </form>
     </div>
   );

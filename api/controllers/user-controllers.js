@@ -12,9 +12,28 @@ const register = async (req, res, next) => {
   }
   const { username, email, password } = req.body;
 
+  let existingEmail;
+  try {
+    existingEmail = await User.findOne({ email: email });
+  } catch (err) {
+    const error = new HttpError(
+      "Register failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+
+  if (existingEmail) {
+    const error = new HttpError(
+      "This email exists already, please try another instead.",
+      422
+    );
+    return next(error);
+  }
+
   let existingUser;
   try {
-    existingUser = await User.findOne({ email: email });
+    existingUser = await User.findOne({ username: username });
   } catch (err) {
     const error = new HttpError(
       "Register failed, please try again later.",
@@ -25,7 +44,7 @@ const register = async (req, res, next) => {
 
   if (existingUser) {
     const error = new HttpError(
-      "User exists already, please login instead.",
+      "This username exists already, please login instead.",
       422
     );
     return next(error);
@@ -87,6 +106,10 @@ const login = async (req, res, next) => {
 
   res.json({ message: "Logged in!" });
 };
+
+// const userWatchList = async (req, res, next) => {
+//   const {}
+// }
 
 exports.register = register;
 exports.getUsers = getUsers;

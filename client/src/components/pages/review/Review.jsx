@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./review.module.css";
-import AddReview from "./AddReview/AddReview";
+// import AddReview from "./AddReview/AddReview";
 import ListUser from "./list-review/user-review/ListUser";
+import Comments from "./../../comments/Comments";
 import ListExpert from "./list-review/expert-review/ListExpert";
 const Review = () => {
   return (
@@ -32,10 +33,11 @@ const Review = () => {
           </div>
         </div>
       </div>
-      <AddReview/>
-      <ListUser/>
-      <ListExpert/>
+      {/* <AddReview/> */}
 
+      <Comments currentUserId="1" />
+      <ListUser />
+      <ListExpert />
     </div>
   );
 };
