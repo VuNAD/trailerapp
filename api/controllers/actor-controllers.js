@@ -36,9 +36,15 @@ const createActor = async (req, res, next) => {
 
   // let trailer;
 
-  const { name, information, birthday, movieID } = req.body;
+  const { name, information, birthday, avatar, movieID } = req.body;
 
-  const createdActor = new Actor({ name, information, birthday, movieID });
+  const createdActor = new Actor({
+    name,
+    information,
+    birthday,
+    movieID,
+    avatar,
+  });
 
   try {
     createdActor.save();
@@ -66,7 +72,7 @@ const addTrailerToActor = async (req, res, next) => {
       500
     );
     return next(error);
-  } 
+  }
   if (!actor) {
     const error = new HttpError("Could not find actor", 404);
     return next(error);
@@ -89,7 +95,7 @@ const addTrailerToActor = async (req, res, next) => {
   }
 
   console.log(trailer);
- 
+
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
@@ -189,8 +195,35 @@ const getActors = async (req, res, next) => {
   });
 };
 
+const getActorById = async (req, res, next) => {
+  const actorId = req.params.aid;
+
+  let actor;
+  try {
+    actor = await Actor.findById(actorId);
+  } catch (err) {
+    const error = new HttpError(
+      "Something went wrong , could not find review",
+      500
+    );
+    return next(error);
+  }
+
+  if (!actor) {
+    const error = new HttpError(
+      "Could not find a review for the provided id.",
+      404
+    );
+    return next(error);
+  }
+
+  res.json({ actor: actor.toObject({ getters: true }) });
+};
+
+
 exports.createActor = createActor;
 exports.updateActor = updateActor;
 exports.deleteActor = deleteActor;
 exports.getActors = getActors;
 exports.addTrailerToActor = addTrailerToActor;
+exports.getActorById = getActorById;

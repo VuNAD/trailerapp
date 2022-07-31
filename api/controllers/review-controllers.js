@@ -16,7 +16,7 @@ const createReview = async (req, res, next) => {
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  const { title, rating } = req.query;
+  const { title, rating,parentId } = req.query;
 
   // const user
 
@@ -25,6 +25,7 @@ const createReview = async (req, res, next) => {
   const createdReview = new Review({
     userID,
     title,
+    parentId,
     rating,
     trailerID,
   });
@@ -58,14 +59,15 @@ const createReview = async (req, res, next) => {
   console.log(trailer);
 
   try {
-    const sess = await mongoose.startSession();
-    sess.startTransaction();
-    await createdReview.save({ session: sess });
-    user.reviews.push(createdReview);
-    trailer.reviews.push(createdReview);
-    await user.save({ session: sess });
-    await trailer.save({ session: sess });
-    await sess.commitTransaction();
+    // const sess = await mongoose.startSession();
+    // sess.startTransaction();
+    // await createdReview.save({ session: sess });
+    await createdReview.save();
+    // user.reviews.push(createdReview);
+    // trailer.reviews.push(createdReview);
+    // await user.save({ session: sess });
+    // await trailer.save({ session: sess });
+    // await sess.commitTransaction();
 
     //trailer.actors.push(actorid);
     // trailer.actors=[...trailer.actors,...newacter]

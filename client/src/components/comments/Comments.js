@@ -7,13 +7,44 @@ import {
   updateComment as updateCommentApi,
   deleteComment as deleteCommentApi,
 } from "../../api";
-import "./comments.css"
+import "./comments.css";
+import { useHttpClient } from "../../hooks/http-hook";
+
 const Comments = ({ commentsUrl, currentUserId }) => {
   const [backendComments, setBackendComments] = useState([]);
   const [activeComment, setActiveComment] = useState(null);
   const rootComments = backendComments.filter(
     (backendComment) => backendComment.parentId === null
   );
+
+  // const { sendRequest } = useHttpClient();
+  // const rootComments = async (event) => {
+  //   event.preventDefault();
+  //   try {
+  //     const responseData = await sendRequest("http://localhost:5000/api/review",
+  //     "GET",
+  //     JSON.stringify({
+
+  //     })
+  //     );
+  //   } catch (err) {}
+  // };
+
+  useEffect(() => {
+    const sendRequest = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/review/62e5efd5d33ef948b4f554fe");
+
+        const responseData = await response.json();
+        if (!responseData.ok) {
+          throw new Error(responseData.message);
+        }
+        setBackendComments(responseData.review)
+      } catch (err) {}
+    };
+    sendRequest();
+  },[]);
+
   const getReplies = (commentId) =>
     backendComments
       .filter((backendComment) => backendComment.parentId === commentId)

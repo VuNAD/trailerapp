@@ -5,7 +5,7 @@ const actorSchema = new mongoose.Schema({
   information: { type: String, required: true },
   birthday: { type: Date, required: true },
   movieID: [{ type: mongoose.Types.ObjectId, default: null, ref: "Trailer" }],
-  avatar: { type: String, default: null },
+  avatar: { type: String, required: false },
   actorImages: [{ type: String, default: null }],
 });
 

@@ -31,6 +31,7 @@ router.post("/add-trailer",actorController.addTrailerToActor);
 router.delete("/:aid", actorController.deleteActor);
 
 router.get("/", actorController.getActors);
+router.get("/:aid",actorController.getActorById);
 
 // router.post("/login", userController.login);
 
