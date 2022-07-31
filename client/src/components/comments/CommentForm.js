@@ -3,6 +3,7 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 
 const CommentForm = ({
   // parentId,
+  activeComment,
   handleSubmit,
   parentId = null,
   submitLabel,
@@ -21,10 +22,8 @@ const CommentForm = ({
   const onSubmit = (event) => {
     event.preventDefault();
     handleSubmit(text, parentId, rating);
-    // console.log(rating);
     setText("");
     setRating(0);
-    // console.log(rating);
   };
   return (
     <form onSubmit={onSubmit}>
@@ -42,7 +41,9 @@ const CommentForm = ({
               onMouseEnter={() => setHover(index)}
               onMouseLeave={() => setHover(rating)}
             >
-              <StarRateIcon className="star" />
+              {activeComment?.type !== "replying" && (
+                <StarRateIcon className="star" />
+              )}
             </button>
           );
         })}

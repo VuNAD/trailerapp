@@ -16,7 +16,7 @@ const createReview = async (req, res, next) => {
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
   }
-  const { title, rating,parentId } = req.query;
+  const { title, rating, parentId } = req.query;
 
   // const user
 
@@ -64,15 +64,16 @@ const createReview = async (req, res, next) => {
     // await createdReview.save({ session: sess });
     await createdReview.save();
     // user.reviews.push(createdReview);
-    // trailer.reviews.push(createdReview);
-    // await user.save({ session: sess });
-    // await trailer.save({ session: sess });
-    // await sess.commitTransaction();
+    // user.reviews.push(createdReview);
+    trailer.reviews.push(createdReview);
+    await trailer.save();
 
-    //trailer.actors.push(actorid);
-    // trailer.actors=[...trailer.actors,...newacter]
-    // await trailer.save({ session: sess });
+    console.log({user})
+    user.reviews.push(createdReview);
+    await user.save();
+   
   } catch (err) {
+    console.log(err)
     const error = new HttpError(
       "Review this trailer failed, please try again.",
       500
@@ -143,6 +144,40 @@ const getReviewsByUserId = async (req, res, next) => {
   });
 };
 
+const getReviewsByTrailerId = async (req, res, next) => {
+  const trailerID = req.params.tid;
+
+  // let places;
+  let trailerWithReviews;
+  try {
+    trailerWithReviews = await Trailer.findById(trailerID).populate("reviews");
+  } catch (err) {
+    const error = new HttpError(
+      "Fetching reviews failed, please try again later",
+      500
+    );
+    return next(error);
+  }
+
+  // if (!places || places.length === 0) {
+  if (!trailerWithReviews || trailerWithReviews.reviews.length === 0) {
+    return next(
+      new HttpError(
+        "Could not find review(s) for the provided trailer id.",
+        404
+      )
+    );
+  }
+
+ return res.json({
+    // reviews: trailerWithReviews.reviews.map((review) =>
+    //   review.toObject({ getters: true })
+    // ),
+    reviews :trailerWithReviews.reviews
+  });
+  // console.log(reviews)
+};
+
 const deleteReview = async (req, res, next) => {
   const reviewId = req.params.rid;
 
@@ -188,3 +223,4 @@ exports.createReview = createReview;
 exports.deleteReview = deleteReview;
 exports.getReviewById = getReviewById;
 exports.getReviewsByUserId = getReviewsByUserId;
+exports.getReviewsByTrailerId = getReviewsByTrailerId;

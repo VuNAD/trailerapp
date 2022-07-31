@@ -19,6 +19,7 @@ router.post(
 router.delete("/:rid", reviewController.deleteReview);
 
 router.get("/:rid", reviewController.getReviewById);
+router.get("/trailer/:tid", reviewController.getReviewsByTrailerId);
 
 router.get("/user/:uid", reviewController.getReviewsByUserId);
 

@@ -8,7 +8,7 @@ import {
   deleteComment as deleteCommentApi,
 } from "../../api";
 import "./comments.css";
-import { useHttpClient } from "../../hooks/http-hook";
+// import { useHttpClient } from "../../hooks/http-hook";
 
 const Comments = ({ commentsUrl, currentUserId }) => {
   const [backendComments, setBackendComments] = useState([]);
@@ -17,33 +17,22 @@ const Comments = ({ commentsUrl, currentUserId }) => {
     (backendComment) => backendComment.parentId === null
   );
 
-  // const { sendRequest } = useHttpClient();
-  // const rootComments = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const responseData = await sendRequest("http://localhost:5000/api/review",
-  //     "GET",
-  //     JSON.stringify({
-
-  //     })
-  //     );
-  //   } catch (err) {}
-  // };
-
   useEffect(() => {
     const sendRequest = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/review/62e5efd5d33ef948b4f554fe");
+        const response = await fetch(
+          "http://localhost:5000/api/review/trailer/62e432b36fe4466698b9b5a2"
+        );
 
         const responseData = await response.json();
-        if (!responseData.ok) {
+        if (!response.ok) {
           throw new Error(responseData.message);
         }
-        setBackendComments(responseData.review)
+        setBackendComments(responseData.reviews);
       } catch (err) {}
     };
     sendRequest();
-  },[]);
+  }, []);
 
   const getReplies = (commentId) =>
     backendComments
@@ -52,19 +41,19 @@ const Comments = ({ commentsUrl, currentUserId }) => {
         (a, b) =>
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
-  const addComment = (text, parentId, rating) => {
-    createCommentApi(text, parentId, rating).then((comment) => {
-      console.log(text, rating);
+  const addComment = (text, parentId, rating, username) => {
+    createCommentApi(text, parentId, rating, username).then((comment) => {
+      console.log(text, rating, username);
       setBackendComments([comment, ...backendComments]);
       setActiveComment(null);
     });
   };
 
-  const updateComment = (text, commentId) => {
-    updateCommentApi(text).then(() => {
+  const updateComment = (title, commentId) => {
+    updateCommentApi(title).then(() => {
       const updatedBackendComments = backendComments.map((backendComment) => {
         if (backendComment.id === commentId) {
-          return { ...backendComment, body: text };
+          return { ...backendComment, body: title };
         }
         return backendComment;
       });
@@ -82,12 +71,6 @@ const Comments = ({ commentsUrl, currentUserId }) => {
       });
     }
   };
-
-  useEffect(() => {
-    getCommentsApi().then((data) => {
-      setBackendComments(data);
-    });
-  }, []);
 
   return (
     <div className="comments">

@@ -9,6 +9,7 @@ const router = express.Router();
 // router.get('/')
 router.get("/:tid", trailerController.getTrailerById);
 
+
 router.post(
   "/",
   [

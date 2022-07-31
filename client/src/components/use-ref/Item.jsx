@@ -17,9 +17,7 @@ const Item = ({ index }) => {
         const response = await fetch(
           "http://localhost:5000/api/trailer/62e432b36fe4466698b9b5a2"
         );
-
         const responseData = await response.json();
-
         if (!response.ok) {
           throw new Error(responseData.message);
         }

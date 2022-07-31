@@ -1,5 +1,8 @@
 import CommentForm from "./CommentForm";
 // import { makeStyles } from '@material-ui/core';z
+import { useEffect, useState } from "react";
+import { useHttpClient } from "../../hooks/http-hook";
+import { getComments } from './../../api';
 
 const Comment = ({
   comment,
@@ -29,6 +32,49 @@ const Comment = ({
   const canEdit = currentUserId === comment.userId && !timePassed;
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
+  // const [listUser,setListUser]=useState([])
+  const [username, setUsername] = useState("");
+  const { sendRequest } = useHttpClient();
+
+  useEffect(() => {
+    const sendRequest = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/user/" + comment.userID
+        );
+
+        const responseData = await response.json();
+        console.log(responseData);
+        if (!response.ok) {
+          throw new Error(responseData.message);
+        }
+        // setLoadedReviews(responseData.reviews);
+        setUsername(responseData.username);
+      } catch (err) {}
+    };
+    sendRequest();
+  }, []);
+
+  // const NewComment = async (event) => {
+  //   event.preventDefault();
+
+  //   try {
+  //     const responseData = await sendRequest(
+  //       "http://localost:5000/api/review",
+  //       "POST",
+  //       JSON.stringify({
+  //         title: comment.body,
+  //         username: username,
+  //         rating: comment.rating,
+  //       }),
+  //       {
+  //         "Content-Type": "application/json",
+  //       }
+  //     );
+  //     // console.log(responseData)
+  //     {responseData.getComments}
+  //   } catch (err) {}
+  // };
   return (
     <div key={comment.id} className="comment">
       <div className="comment-right-part">
@@ -36,10 +82,10 @@ const Comment = ({
           {!parentId && <div className="comment-rating">{comment.rating}</div>}
           <div className="comment-content">
             <div className="author-date">
-              <div className="comment-author">{comment.username}</div>
+              <div className="comment-author">{username}</div>
               <div className="comment-date">{createdAt}</div>
             </div>
-            {!isEditing && <div className="comment-text">{comment.body}</div>}
+            {!isEditing && <div className="comment-text">{comment.title}</div>}
           </div>
         </div>
         {isEditing && (
@@ -86,6 +132,7 @@ const Comment = ({
         </div>
         {isReplying && (
           <CommentForm
+            activeComment={activeComment}
             submitLabel="Reply"
             handleSubmit={(text) => addComment(text, replyId)}
           />

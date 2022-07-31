@@ -39,7 +39,7 @@ const Review = () => {
       </div>
       {/* <AddReview/> */}
 
-      <Comments currentUserId="1" />
+      <Comments currentUserId="62da3ff8e66ea943d083e9d6" />
       {/* <ListUser />
       <ListExpert /> */}
       {/* <Test/> */}

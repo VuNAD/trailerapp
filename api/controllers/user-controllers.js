@@ -81,6 +81,21 @@ const getUsers = async (req, res, next) => {
   res.json({ users: users.map((user) => user.toObject({ getters: true })) });
 };
 
+const getUserById = async (req, res, next) => {
+  const userId = req.params.uid;
+  let user;
+  try {
+    user = await User.findById( userId , "-password");
+  } catch (err) {
+    const error = new HttpError(
+      "Fetching user failed, please try again later.",
+      500
+    );
+    return next(error);
+  }
+  res.json(user);
+};
+
 const login = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -114,3 +129,4 @@ const login = async (req, res, next) => {
 exports.register = register;
 exports.getUsers = getUsers;
 exports.login = login;
+exports.getUserById = getUserById;
